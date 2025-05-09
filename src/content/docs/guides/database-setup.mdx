@@ -1,0 +1,35 @@
+---
+title: Database
+description: Overview of the backend architecture, folder structure, and setup instructions for the omits18 Golang-based service.
+---
+---
+
+### `database-setup.mdx`
+
+```mdx
+---
+
+title: Database Setup
+description: Overview of database configuration, migrations, and environment variables.
+---
+
+# Database Setup
+
+This project uses a **PostgreSQL** database and handles connections through environment configs and Docker Compose.
+
+---
+
+## Configuration
+
+Database connection is managed via environment variables:
+
+| Variable           | Description               |
+|--------------------|---------------------------|
+| `DB_HOST`          | Hostname (default: `db`)  |
+| `DB_PORT`          | Port (default: `5432`)    |
+| `DB_USER`          | Username                  |
+| `DB_PASSWORD`      | Password                  |
+| `DB_NAME`          | Database name             |
+
+### Example `.env` values:
+

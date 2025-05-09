@@ -1,0 +1,45 @@
+---
+title: Backend Project Overview (OMITS18)
+description: Overview of the backend architecture, folder structure, and setup instructions for the omits18 Golang-based service.
+---
+
+# Backend Project Overview - `OMITS18`
+
+This document provides a technical overview of the OMITS18 backend project built using Go, GraphQL (`gqlgen`), Docker, and modular architecture. The purpose is to guide developers in understanding the core structure and how to get started with the service.
+
+## Project Structure
+
+The project follows a modular design for scalability and maintainability. Below is a summary of the major directories and their purposes:
+
+| Directory       | Description                                                                 |
+|----------------|-----------------------------------------------------------------------------|
+| `app/`         | Application logic such as use cases, handlers, and services.                |
+| `bootstrap/`   | Initial setup logic (e.g., DB connection, server start, logger init).       |
+| `config/`      | Configuration loading from environment or static files.                     |
+| `database/`    | Database connection, schema migrations, and repository patterns.            |
+| `pkg/`         | Common utilities (e.g., logger, JWT helpers, error formatter).              |
+| `routes/`      | Route and resolver configuration, REST or GraphQL entry points.             |
+| `tests/`       | Unit tests and integration test files.                                      |
+| `tools/`       | Internal CLI tools or scripts for schema generation, seeding, etc.         |
+| `volume/`      | Persistent volume setup for Docker (used for local storage or mock files).  |
+
+## Core Files
+
+| File                 | Description                                                         |
+|----------------------|---------------------------------------------------------------------|
+| `.env`               | Environment variables (used for local development).                 |
+| `.env.example`       | Template for environment variables.                                 |
+| `docker-compose.yml` | Compose setup for DB, backend service, and other dependencies.      |
+| `go.mod`             | Go module definition file.                                          |
+| `gqlgen.yml`         | Configuration file for `gqlgen`, includes schema and resolver paths.|
+| `Makefile`           | Contains useful automation commands for development.                |
+| `README.md`          | General overview of the project for GitHub or landing documentation.|
+
+## Setup Instructions
+
+### 1. Clone and Install Dependencies
+
+```bash
+git clone https://github.com/your-org/omits18.git
+cd omits18
+go mod tidy
