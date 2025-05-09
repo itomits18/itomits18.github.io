@@ -16,6 +16,7 @@ export default defineConfig({
 					items: [
 						// Each item here is one entry in the navigation menu.
 						{ label: 'Guides', slug: 'guides/project-overview' },
+						{ label: 'Database', slug: 'guides/database-setup' },
 					],
 				},
 				{
