@@ -8,7 +8,7 @@ export default defineConfig({
 	site: 'https://itomits18.github.io',
 	integrations: [
 		starlight({ 
-			title: 'My Docs',
+			title: 'OMITS 18',
 			social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/withastro/starlight' }],
 			sidebar: [
 				{
