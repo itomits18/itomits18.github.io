@@ -11,17 +11,22 @@ export default defineConfig({
 			title: 'OMITS 18',
 			social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/withastro/starlight' }],
 			sidebar: [
-				{
-					label: 'Guides',
+					{
+					label: 'Getting Started',
 					items: [
-						// Each item here is one entry in the navigation menu.
-						{ label: 'Guides', slug: 'guides/project-overview' },
-						{ label: 'Database', slug: 'guides/database-setup' },
-					],
+						{ label: 'Installation', slug: 'getting-started/installation'},
+						{ label: 'Configuration', slug: 'getting-started/configuration'},
+						{ label: 'Directory Structure', slug: 'getting-started/directory'},
+						{ label: 'Database', slug: 'getting-started/database' },
+						],
 				},
 				{
 					label: 'Reference',
 					autogenerate: { directory: 'reference' },
+				},
+				{
+					label: 'API Documentation',
+					autogenerate: { directory: 'api-documentation' },
 				},
 			],
 		}),
