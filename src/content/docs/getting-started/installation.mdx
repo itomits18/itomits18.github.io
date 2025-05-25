@@ -2,34 +2,81 @@
 title: Installation
 description: Below is the brief installation of this project 
 ---
-import { Steps } from '@astrojs/starlight/components';
 
-# Prerequisites
-We recommend you to uses the **prerequisites** that we provided
+import { Steps } from '@astrojs/starlight/components';
+import { Code } from '@astrojs/starlight/components';
+
+## Prerequisites
+We recommend you to use the **prerequisites** that we provided
+
 <Steps>
 
 1. Golang
-   This project use **Golang** Programming language, you can install from link below
-   ```js
-   install golang from 'https://go.dev/doc/install';
-   ```
-2. IDE 
-   This project use **Goland** from Jetbrains, you can install from link provided
-   ```js
-   install Goland IDE from 'https://www.jetbrains.com/go/download';
-   ```
+
+   This project uses **Golang** programming language.  
+      Install Golang from [https://go.dev/doc/install](https://go.dev/doc/install)
+
+2. IDE
+
+   This project is recommended to be opened using **GoLand** from JetBrains.  
+      Download GoLand IDE from [https://www.jetbrains.com/go/download](https://www.jetbrains.com/go/download)
+
 3. Docker
-   This project use **Docker Dekstop** as it's launch container, you can follow the installation instruction from the link provided
-   ```js
-   install Docker Dekstop from 'https://docs.docker.com/desktop/setup/install';
-   ```
+
+   This project uses **Docker Desktop** to run containers.  
+      Follow the installation guide at [https://docs.docker.com/desktop/setup/install](https://docs.docker.com/desktop/setup/install)
+
 4. Postman
-   This project use **Postman** to organize API's project, you can see the instruction from the link provided
-   ```js
-   install Postman from 'https://www.postman.com/downloads';
-   ```
+
+   Postman is used to test and organize API requests in this project.  
+      Download Postman from [https://www.postman.com/downloads](https://www.postman.com/downloads)
+
 </Steps>
 
-# Project Setup
-Below is the instruction for project installation 
+## Project Setup
+Below is the step-by-step guide to set up this project from GitHub
 
+<Steps>
+
+1. Clone the Repository
+
+   Open your terminal and run the following command to clone the project:
+   ```bash
+   git clone https://github.com/omits18-backend.git
+   cd your-repo-name
+   ```
+
+2. Configure Environment
+
+   Duplicate the `.env.example` file and rename it to `.env`. Then, update the environment variables as needed:
+   ```bash
+   cp .env.example .env
+   ```
+
+3. Install Go Dependencies
+
+   Make sure all Go modules are downloaded properly:
+   ```bash
+   go mod tidy
+   ```
+
+4. Run Docker Containers
+
+   Start all required services using Docker:
+   ```bash
+   docker-compose up -d
+   ```
+
+5. Run the Application
+
+   Once all services are running, start the application:
+   ```bash
+   go run ./app/main.go  
+   ```
+
+6. Test with Postman
+
+   Use the provided Postman collection (if available) to test API endpoints.  
+   You can import it from: `docs/postman_collection.json` or other provided path.
+
+</Steps>

@@ -1,3 +1,65 @@
 ---
 title: Configuration
+description: Here is the configuration of the project
 ---
+
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+# Project Configuration
+
+This project uses a combination of **environment variables** and optional **YAML/JSON configuration files** to manage configuration settings across different environments (development, staging, production).
+
+## Environment Variables
+
+We use a `.env` file to store sensitive and environment-specific values. These values are loaded into the application using a Go library such as [`github.com/joho/godotenv`](https://github.com/joho/godotenv).
+
+### `.env` values:
+Below is the env value of database of the project.
+
+<Tabs>
+  <TabItem label=".env">
+    ```bash
+    APP_PORT=8080
+    TIMEZONE=Asia/Jakarta
+    APP_STATUS=local
+    DB_DRIVER=postgres
+
+    #SQLite
+    SQLITE_PATH=databases/database
+
+    # PostgreSQL
+    POSTGRES_USER=postgres
+    POSTGRES_PASSWORD=pass
+    POSTGRES_DB=db
+    POSTGRES_PORT=9920
+    POSTGRES_HOST=localhost
+
+    # MySQL
+    MYSQL_USER=mysql
+    MYSQL_PASSWORD=pass
+    MYSQL_DB=db
+    MYSQL_PORT=3307
+    MYSQL_HOST=localhost
+
+    SMTP_HOST=smtp.gmail.com
+    SMTP_PORT=587
+    SMTP_SENDER="OMITS 18 <it.omits18@gmail.com>"
+    SMTP_EMAIL=it.omits18@gmail.com
+    SMTP_PASSWORD=kvpnrgzeblluipmf
+
+    AWS_ACCESS_KEY_ID=test
+    AWS_SECRET_ACCESS_KEY=test
+    AWS_DEFAULT_REGION=ap-southeast-3
+    S3_BUCKET_NAME=omits
+    S3_DOMAIN=localhost
+
+    MEILISEARCH_MASTER_KEY=f678b056
+    MEILISEARCH_API_KEY=4344c08e
+    MEILISEARCH_HOST=http://localhost
+    MEILISEARCH_PORT=7700
+
+    JWT_SECRET=f525cb12efb4aab7955f95847ec6aef6f6f7c80b4fd05629d51bcc79146ea8ad66b649ac038617d5510dd56b30cc5ba78f726e0591bee7806e55cd6b46466fa2756ec48fa10511484bed5b9ece143dc82fd27172af7b7a3b9628298c18556508be3bc353d4bb8b236df88be1301fa0238c9260b119160920443186d97e27d6b2f2ffac80ee04f0POSTGRES4ec1e6a2dda2ace499dee7c53c04e537dd1d8644f075d69013cb61434e945952f9213efb55ddcd328fb45842b6067b8b5b65a7fcf6cb5039d3285c83ad64b1c0ef427ea4cf93b6f4084590064ccacb622830cb0a8c7c5437358c912f745dc08d3d44f3b69566bebd7a7fce45c186a9ea70cc230b204b0f7e
+
+    ```
+</TabItem>
+</Tabs>

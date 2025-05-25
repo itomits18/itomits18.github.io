@@ -1,3 +1,68 @@
 ---
 title: Directory Structure
+description: This is the documentation of the project directory structure
 ---
+
+import { FileTree } from '@astrojs/starlight/components';
+
+## Project Directory Structure
+
+Below is the directory project structure of OMITS 18 BackEnd
+
+<FileTree>
+
+- omits18
+    - app
+        - helpers
+            - test.go
+        - http
+            - test.go
+        - models
+            - test.go 
+        - repositories
+            - test.go
+        - services
+            - main.go
+    - bootstrap
+        - init.go
+    - config
+        - config.go
+    - database
+        - migrations
+            - down 
+            - up
+        - schema
+            - participant_schema.puml
+            - role_permission_schema.puml
+        - seeders
+            - meillisearch.go
+            - redis.go
+            - s3.go
+            - sql.go
+    - pkg
+    - routes
+    - tests
+    - tools
+    - volume
+    - .env
+    - .env.example
+    - docker-compose.yml
+    - go.mod
+        - go.sum
+    - gqlgen.yml
+    - Makefile
+    - README.md
+
+</FileTree>
+
+## Notes
+
+- **app/** .
+- **bootstrap/** 
+- **configs/** 
+- **database/** 
+- **pkg/** 
+- **routes/** 
+- **tests/**
+- **tools/**
+- **volume/**   
