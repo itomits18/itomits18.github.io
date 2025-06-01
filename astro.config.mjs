@@ -20,14 +20,31 @@ export default defineConfig({
 						{ label: 'Database', slug: 'getting-started/database' },
 						],
 				},
-				{
-					label: 'Reference',
-					autogenerate: { directory: 'reference' },
+					{
+						label: 'API Documentation',
+						items: [
+							{ label: 'Authentication', slug:'api/authentication' },
+							{ label: 'Error Handling', slug:'api/error' },
+							{ label: 'API Documentation', slug:'api/api-documentation' },
+						],
 				},
+					{
+						label: 'Advanced Topics',
+						items: [ 
+							{ label: 'Environtment Variables', slug: 'advanced/env' },
+							{ label: 'Testing', slug: 'advanced/testing' },
+							{ label: 'Deployment', slug: 'advanced/deployment' },
+						],
+					},
 				{
-					label: 'API Documentation',
-					autogenerate: { directory: 'api-documentation' },
+					label: 'Project Info',
+					items: [ 
+							{ label: 'References', slug: 'project/references' },
+							{ label: 'Contributing', slug: 'project/contributing' },
+							{ label: 'Changelog', slug: 'project/changelog' },
+						],
 				},
+				
 			],
 		}),
 	],
