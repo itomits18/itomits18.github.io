@@ -14,13 +14,58 @@ Below is the directory project structure of OMITS 18 BackEnd
 - omits18
     - app
         - helpers
-            - test.go
+            - error_helper.go
+            - file_helpers.go
+            - response_helper.go
         - http
-            - test.go
+            - controllers
+                - auth_controller.go
+                - auth_controller_impl.go
+                - email_controller.go
+                - email_controller_impl.go
+                - participants_controller.go
+                - participants_controller_impl.go
+                - region_controller.go
+                - region_controller_impl.go
+                - s3_controller.Go
+                - s3_controller_impl.go
+                - user_controller.go
+                - user_controller_impl.go
+            - graph
+                - model
+                    - models_gen.go
+                - generated.go
+                - resolver.go
+                - schema.graphqls
+            - middleware
+                - middleware
+                    - auth_middleware.go
+                    - log_middleware.go
+            - requests
+                - auth_request.go
+                - email_request.go
+                - file_request.go
+                - participant_request.go
+                - user_request.go
+                - web_request.go
+            - responses
+                - file_response.Go
+                - participant_response.Go
+                - region_response.Go
+                - user_response.go
+                - user_response.go
+                - web_response.go
         - models
-            - test.go 
+            - participants.go
+            - region.go
+            - user.go 
         - repositories
-            - test.go
+            - participants_repository.go
+            - participants_repository_impl.go
+            - region_repository.go
+            - region_repository_impl.go
+            - user_repository.go
+            - user_repository_impl.go
         - services
             - main.go
     - bootstrap
@@ -40,10 +85,15 @@ Below is the directory project structure of OMITS 18 BackEnd
             - s3.go
             - sql.go
     - pkg
+        - test.go
     - routes
+        - test.go
     - tests
+        - test.go
     - tools
+        - test.go
     - volume
+        - test.go
     - .env
     - .env.example
     - docker-compose.yml
@@ -55,14 +105,102 @@ Below is the directory project structure of OMITS 18 BackEnd
 
 </FileTree>
 
-## Notes
+# Directory Notes
 
-- **app/** .
-- **bootstrap/** 
-- **configs/** 
-- **database/** 
-- **pkg/** 
-- **routes/** 
-- **tests/**
-- **tools/**
-- **volume/**   
+Below is a breakdown of the main folders and their purposes in the backend project.
+
+## Main Folders Overview
+
+| Folder         | Description |
+|----------------|-------------|
+| `app/`         | Core business logic of the application (helpers, HTTP layer, models, repositories, services) |
+| `bootstrap/`   | Initialization logic such as loading configs or database setup |
+| `config/`      | Configuration loader (e.g., read from `.env` or YAML files) |
+| `database/`    | Database schema, migrations (up/down), and seeders |
+| `pkg/`         | Third-party packages or reusable utility libraries |
+| `routes/`      | API route definitions and GraphQL route bindings |
+| `tests/`       | Unit and integration test files |
+| `tools/`       | Developer tools or scripts |
+| `volume/`      | External storage (e.g., file uploads or generated files) |
+| `.env*`        | Environment variable definitions |
+| `docker-compose.yml` | Docker service orchestration file |
+| `go.mod / go.sum` | Go module dependencies |
+| `gqlgen.yml`   | GQLGen config file for GraphQL generation |
+| `Makefile`     | CLI shortcuts for building, testing, and running the project |
+| `README.md`    | Project documentation and usage guide |
+
+---
+
+## Detailed Folder Descriptions
+
+### `app/`
+Contains the main logic of the application, broken down into:
+
+- `helpers/`: Utility functions to handle errors, file processing, and response formatting.
+- `http/`: Manages all HTTP-related functionality.
+  - `controllers/`: Handlers for various routes grouped by feature (auth, user, email, etc).
+  - `graph/`: GraphQL layer including schema, generated models, and resolvers.
+  - `middleware/`: HTTP middleware for authentication, logging, etc.
+  - `requests/`: Structs used to bind and validate incoming HTTP requests.
+  - `responses/`: Structs used to shape outgoing responses.
+- `models/`: Structs that map to the database entities (participants, users, regions).
+- `repositories/`: Interface and implementation to interact with database models.
+- `services/`: Business service logic. The `main.go` here may serve as a service entry point.
+
+---
+
+### `bootstrap/`
+Responsible for bootstrapping the app (e.g., initializing config, database, and services).
+
+---
+
+### `config/`
+Configuration logic, typically loads and parses values from `.env` or other config files.
+
+---
+
+### `database/`
+Handles database-related setup:
+- `migrations/`: SQL scripts to migrate schema (separated into `up/` and `down/`).
+- `schema/`: Diagram files in PlantUML format to describe relationships.
+- `seeders/`: Scripts to populate initial data (SQL, Redis, S3, etc).
+
+---
+
+### `pkg/`
+Reusable libraries or external tools packaged for modularity.
+
+---
+
+### `routes/`
+Defines and registers all HTTP or GraphQL routes.
+
+---
+
+### `tests/`
+Contains automated tests. Typically follows the structure of `app/` for unit testing each layer.
+
+---
+
+### `tools/`
+CLI tools, automation scripts, or dev utilities.
+
+---
+
+### `volume/`
+Temporary or persistent volume storage (e.g., uploaded files, exports).
+
+---
+
+## Config & Miscellaneous
+
+- `.env` & `.env.example`: Environment configuration files (real and template).
+- `docker-compose.yml`: Defines Docker services (Postgres, Redis, etc.).
+- `go.mod` & `go.sum`: Declare Go dependencies and their versions.
+- `gqlgen.yml`: Used to configure how `gqlgen` generates GraphQL server code.
+- `Makefile`: Defines command shortcuts (e.g., `make run`, `make migrate`).
+- `README.md`: Main project documentation.
+
+---
+
+> *Note:* 
