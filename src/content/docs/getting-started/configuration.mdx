@@ -2,10 +2,80 @@
 title: Configuration
 description: Here is the configuration of the project
 ---
-
+import { Steps } from '@astrojs/starlight/components';
 import { Tabs, TabItem } from '@astrojs/starlight/components';
 
 # Project Configuration
 
 This project uses a combination of **environment variables** and optional **YAML/JSON configuration files** to manage configuration settings across different environments (development, staging, production).
+To ensure the project runs smoothly, please follow the configuration setup outlined below. This includes setting up your environment file, Docker containers, and Postman collection.
+
+
+## 1. Environment Setup
+
+<Steps>
+
+    1. Create a `.env` file
+
+        Duplicate the example file provided in the project root:
+        ```bash
+        cp .env.example .env
+        ```
+
+2. Adjust the values
+
+    Modify the .env values according to your local setup or development environment (e.g., database driver, ports, credentials).
+
+3. Supported Drivers
+
+    The project currently supports:
+    - SQLite
+    - PostgreSQL
+    - MySQL
+
+</Steps>
+
+## 2. Docker Configuration
+Docker is used to manage containerized services (such as the database). To spin up all necessary services, follow these steps:
+
+<Steps> 
+
+1. Ensure Docker Desktop is installed
+
+    Download: https://docs.docker.com/desktop
+
+2. Start Docker daemon
+
+    Make sure Docker is running before proceeding.
+
+3. Run the containers
+
+    In the project root directory, execute:
+    ```bash
+    docker-compose up --build
+    ```
+
+4. Tear down containers (when done)
+
+    ```bash
+    docker-compose down
+    ``` 
+</Steps>
+
+## 3. Postman Configuration
+This project uses Postman to manage and test the API endpoints.
+
+<Tabs> 
+<TabItem label="Import Collection"> 
+- Open Postman - Click **Import** 
+- Select the `.postman_collection.json` file from the repository (if provided) 
+</TabItem> 
+
+<TabItem label="Set Environment"> 
+- Import `.postman_environment.json` file 
+- Configure base URL and authentication token if needed 
+</TabItem> 
+</Tabs>
+
+Don't forget to update Postman environment variables like BASE_URL, AUTH_TOKEN, etc., if required.
 
