@@ -3,19 +3,83 @@ title: Database Setup
 description: Overview of database configuration, migrations, and environment variables.
 ---
 
-# Database Setup
+import { Steps } from '@astrojs/starlight/components';
 
-This project uses a **PostgreSQL** database and handles connections through environment configs and Docker Compose.
+# Database
 
-## Configuration
+This project supports multiple database engines (SQLite, PostgreSQL, MySQL) and uses migration and seeder systems to manage schema and initial data.
 
-Database connection is managed via environment variables:
+---
 
-| Variable           | Description               |
-|--------------------|---------------------------|
-| `DB_HOST`          | Hostname (default: `db`)  |
-| `DB_PORT`          | Port (default: `5432`)    |
-| `DB_USER`          | Username                  |
-| `DB_PASSWORD`      | Password                  |
-| `DB_NAME`          | Database name             |
+## 1. Supported Databases
 
+The following database drivers are supported via the `.env` file:
+
+| Driver       | Description                        |
+|--------------|------------------------------------|
+| `sqlite`     | Lightweight file-based DB          |
+| `postgres`   | Recommended for production use     |
+| `mysql`      | Widely-used relational database    |
+
+Set the `DB_DRIVER` variable in `.env` accordingly.
+
+## 2. Migrations
+
+Database migrations are used to define and apply schema changes.
+
+<Steps>
+1. Navigate to the `database/migrations/up` directory
+
+   This folder contains all the SQL migration files used to create tables.
+
+2. Apply Migrations
+
+   Depending on your DB driver, you can execute the `.sql` files manually or integrate with a migration tool.
+
+   Example for PostgreSQL:
+   ```bash
+   psql -U POSTGRES_USER -d POSTGRES_DB -f database/migrations/up/schema.sql
+
+3. Rollback (Optional)
+    
+    The database/migrations/down directory contains rollback scripts to undo changes.
+
+</Steps>
+Always back up your database before applying down migrations.
+
+## 3. Seeders
+Seeders populate the database with initial or sample data.
+
+<Steps> 
+1. Go to the `database/seeders` directory
+
+    You`ll find Go-based seeders for various services:
+    - meilisearch.go
+    - redis.go
+    - s3.go
+    - sql.go
+
+2. Run Seeders (if integrated)
+    
+    You may run the seeders via Go if they`re wired in the main.go or part of bootstrap/init.go.
+    Example:
+
+    ```bash
+    go run bootstrap/init.go
+    ```
+3. Custom Seeder
+
+    You can write your own seeder script to populate additional tables as needed.
+
+</Steps>
+
+## 4. Entity Relationship Diagram
+
+    The schema folder contains .puml files used to visualize table relations using PlantUML.
+
+| File	                        | Description                           |
+|-------------------------------|---------------------------------------|
+| participant_schema.puml       | ERD of participants, regions, etc.    |
+| role_permission_schema.puml   | ERD of roles and permissions          |
+
+You can render them using tools like PlantUML Live or VSCode plugins.
