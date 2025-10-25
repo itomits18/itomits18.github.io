@@ -1,14 +1,14 @@
 ---
-title: User
+title: Participant
 ---
 
-### User Routes
+### Participant Routes
 
 ---
 
 ### **Base URL**
 
-`http:localhost:8080/api/users`
+`http:localhost:8080/api/participants`
 
 ---
 
@@ -19,6 +19,28 @@ title: User
 ### 1. **Get All**
 
 **GET** `/?order_by=created_at&sort_by=asc&limit=2&page=1`
+
+This endpoint allows users to get all of their data.
+
+**Response Example (Success)**:
+
+```json
+{
+    "code": 200,
+    "message": " ",
+    "data": {
+        "id": 7,
+        "name": "John",
+        "email": "john@gmail.com"
+    }
+}
+```
+
+---
+
+### 2. **Get By Id**
+
+**GET** `/`
 
 This endpoint allows users to get all of their data.
 
